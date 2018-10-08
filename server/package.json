@@ -10,7 +10,5 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.11",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
   }
 }
