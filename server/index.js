@@ -1,8 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const keys = require('./config/keys');
-
+const keys = require('./config/dev')
 require('./models/Room');
 
 mongoose.Promise = global.Promise;
