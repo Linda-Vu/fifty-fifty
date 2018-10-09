@@ -2,11 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // ref is referring to the module exports for the respective schemas
-// LINDA!!! ADD REAL QUESTIONS TO DEFAULT ARRAY FOR QUESTIONS
 const RoomSchema = new Schema({
     roomName: String,
-    roomId: String,
-    questions: { type: Array, 'default': ['question 1', 'question 2', 'question 3']},
+    questions: { type: Array, 'default': ['What do you want for yourself from this conversation?', 'What do you want for the other people involved?', 'How would you behave if you want to achieve this outcome?', 'What would you suggest as a solution to the shared outcome that you want for everyone involved?']},
     users: [
         { 
           name: String,
