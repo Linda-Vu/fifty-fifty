@@ -10,11 +10,6 @@ const RoomSchema = new Schema({
           name: String,
           userId: String,
           responses: [ String ]
-        },
-        {
-          name: String,
-          userId: String,
-          responses: [ String ]
         }
     ]
 });
