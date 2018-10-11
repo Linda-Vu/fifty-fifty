@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import Header from './Header.js';
+import CreateRoom from './create/CreateRoom'
 import './App.css';
+
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <p>
-              50 / 50
-          </p>
-        </header>
+        <Header />
+        <CreateRoom />
       </div>
     );
   }
