@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+
 
 // createRoom should have a place to take user input
 // upon submitting the roomName --->
@@ -8,8 +11,10 @@ class CreateRoom extends Component {
     handleKeyPress = (event) => {
         if(event.key === 'Enter'){
           console.log('enter press here! ')
+
         }
       }
+    
       render() {
            return(
                <div>
@@ -19,4 +24,4 @@ class CreateRoom extends Component {
       }
 }
   
-  export default CreateRoom;
+  export default connect (null, actions)(CreateRoom);

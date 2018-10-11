@@ -7,11 +7,9 @@ const Room = mongoose.model('Room');
 
 module.exports = app => {
     app.post('/api/rooms', async (req, res) => {
-    // new Room is constructor function, we pass in an object
-    // so it should conform to the expected structure of the Room Schema
+        // new Room is constructor function, we pass in an object
+        // so it should conform to the expected structure of the Room Schema
         let room = new Room({
-            // roomName: req.body.roomName, 
-            // commented out the real req to insert dummy JSON object below for postman testing
             roomName: req.body.roomName,
             users: [
                       {
