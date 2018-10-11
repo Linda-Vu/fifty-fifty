@@ -11,7 +11,7 @@ import './App.css';
 
 class App extends Component {
   componentDidMount() {
-    this.props.createRoomId({roomName: 'tardiness', firstUserName: 'bob', secondUserName: 'Sally'});
+    //this.props.createRoomId({roomName: 'tardiness', firstUserName: 'bob', secondUserName: 'Sally'});
   }
 
   render() {

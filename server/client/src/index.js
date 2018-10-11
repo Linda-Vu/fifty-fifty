@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from './components/App'
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
-import reducers from './reducers/roomIdReducer';
+import reducers from './reducers/index.js';
 import axios from 'axios';
 
 window.axios = axios;
