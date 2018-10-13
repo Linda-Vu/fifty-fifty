@@ -5,7 +5,9 @@ import * as actions from '../actions';
 
 import Header from './Header.js';
 import CreateRoom from './create/CreateRoom'
+import Survey from './room/Survey'
 import './App.css';
+import Main from './Main.js';
 
 
 
@@ -19,7 +21,7 @@ class App extends Component {
         <BrowserRouter>  
             <div className="App">
                 <Header />
-                <CreateRoom />
+                <Main />
             </div>
         </BrowserRouter>
     );
