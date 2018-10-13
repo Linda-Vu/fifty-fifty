@@ -29,7 +29,6 @@ class CreateRoom extends Component {
       onSubmit(values) {
         console.log(values);
         this.props.createRoom(values, () => {
-          //this.props.history.push("/newRoom");
         });
       }
     
@@ -63,10 +62,10 @@ class CreateRoom extends Component {
                 <div>
                     Here's a link to your new room!:
                     
-                    <a href={`localhost:3000/room/?id=${this.props.room._id}`}> 
+                    <Link to ={`/room/${this.props.room._id}`} > 
                         
-                        localhost:3000/room/?id={this.props.room._id}
-                    </a>
+                        localhost:3000/room/?id=this.props.room._id
+                    </Link>
                     
                 </div>
             )
