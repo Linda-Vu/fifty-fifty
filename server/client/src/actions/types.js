@@ -1,1 +1,1 @@
-export const CREATE_ROOM_ID = 'create_room_id';
+export const CREATE_ROOM = 'create_room';

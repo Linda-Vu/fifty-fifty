@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import roomIdReducer from "./roomIdReducer";
+import roomReducer from "./roomReducer";
 
-const rootReducer = combineReducers({
-  roomId: roomIdReducer,
-  form: formReducer
-});
+let reduxState = {
+    room: roomReducer,
+    form: formReducer   
+}
+
+
+const rootReducer = combineReducers(reduxState);
 
 export default rootReducer;

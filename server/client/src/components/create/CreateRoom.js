@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { createRoomId } from '../../actions';
+import { createRoom } from '../../actions';
 
 
 // createRoom should have a place to take user input
@@ -27,37 +27,50 @@ class CreateRoom extends Component {
       }
     
       onSubmit(values) {
-          debugger;
         console.log(values);
-        this.props.createRoomId(values, () => {
-          this.props.history.push("/");
+        this.props.createRoom(values, () => {
+          //this.props.history.push("/newRoom");
         });
       }
     
       render() {    
         const { handleSubmit } = this.props;
 
-        return (
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <Field
-              label="Room Name"
-              name="roomName"
-              component={this.renderField}
-            />
-            <Field
-              label="User 1"
-              name="firstUserName"
-              component={this.renderField}
-            />
-            <Field
-              label="User 2"
-              name="secondUserName"
-              component={this.renderField}
-            />
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <Link to="/" className="btn btn-danger">Cancel</Link>
-          </form>
-        );
+        if(!this.props.room) {
+            return (
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <Field
+                label="Room Name"
+                name="roomName"
+                component={this.renderField}
+                />
+                <Field
+                label="Human 1"
+                name="firstUserName"
+                component={this.renderField}
+                />
+                <Field
+                label="Human 2"
+                name="secondUserName"
+                component={this.renderField}
+                />
+                <button type="submit" className="btn btn-primary">Submit</button>
+                <Link to="/" className="btn btn-danger">Cancel</Link>
+            </form>
+            );
+        } else {
+            return (
+                <div>
+                    Here's a link to your new room!:
+                    
+                    <a href={`localhost:3000/room/?id=${this.props.room._id}`}> 
+                        
+                        localhost:3000/room/?id={this.props.room._id}
+                    </a>
+                    
+                </div>
+            )
+        }
       }
 }
 
@@ -66,14 +79,14 @@ function validate(values) {
     const errors = {};
   
     // Validate the inputs from 'values'
-    if (!values.title) {
-      errors.title = "Enter a title";
+    if (!values.roomName) {
+      errors.roomName = "Enter a name for your room";
     }
-    if (!values.categories) {
-      errors.categories = "Enter some categories";
+    if (!values.firstUserName) {
+      errors.firstUserName = "Enter a name for your user";
     }
-    if (!values.content) {
-      errors.content = "Enter some content please";
+    if (!values.secondUserName) {
+      errors.secondUserName = "Enter a name for your user";
     }
   
     // If errors is empty, the form is fine to submit
@@ -81,16 +94,21 @@ function validate(values) {
     return errors;
   }
   
+  function mapStateToProps(reduxState) {
+    let room = reduxState.room;  
+    return {room};
+  }
+
   function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ createRoomId }, dispatch);
+    return bindActionCreators({ createRoom }, dispatch);
   }
   
-  const createRoom = reduxForm({
+  const createRoomForm = reduxForm({
     validate,
     form: 'createRoom'
   })(CreateRoom);
   
-export default connect(null, mapDispatchToProps)(createRoom);
+export default connect(mapStateToProps, mapDispatchToProps)(createRoomForm);
 
 
 //   handleKeyPress = (event) => {
