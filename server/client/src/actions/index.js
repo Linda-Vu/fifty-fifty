@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { CREATE_ROOM_ID} from './types';
+import { CREATE_ROOM } from './types';
 
 
-export const createRoomId = (body) => async dispatch => {
+export const createRoom = (body, callback) => async dispatch => {
     const res = await axios.post('/api/rooms', body);
-    dispatch({ type: CREATE_ROOM_ID, payload: res.data});
+    dispatch({ type: CREATE_ROOM, payload: res.data});
+    callback();
 }
