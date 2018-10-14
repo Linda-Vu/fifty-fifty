@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-
-import Header from './Header.js';
-import CreateRoom from './create/CreateRoom'
-import Survey from './room/Survey'
+import Header from './header/Header';
 import './App.css';
 import Main from './Main.js';
-
 
 
 class App extends Component {
@@ -16,6 +12,8 @@ class App extends Component {
     //this.props.createRoomId({roomName: 'tardiness', firstUserName: 'bob', secondUserName: 'Sally'});
   }
 
+  //BrowserRouter renders header as well as Main.js
+  //see Main.js file for the <switch> routes 
   render() {
     return (
         <BrowserRouter>  
