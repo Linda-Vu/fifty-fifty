@@ -117,9 +117,8 @@ module.exports = app => {
 
     // route below aims to get the responses of room schema from api for a given user
     // req needs params, get request cannot have a body unlike post req
-    app.get('/api/room/:roomId/:userId/responses', async (req, res) => {
+    app.get('/api/room/:roomId/responses', async (req, res) => {
         let roomId = req.params.roomId;
-        let userId = req.params.userId;
         Room.findById(roomId, (err, room) => {
             if (err) {
                 //err 500 because server messed up 
@@ -134,8 +133,7 @@ module.exports = app => {
                 // upon returning a 'true' value, .find will return the current iterated object -->
                 // in this case .find returns the user with the id that our client wants
                 // which it is grabbing from the users array in our room model
-                let foundUser = room.users.find(user => user.userId == userId)
-                res.status(200).json(foundUser.responses);
+                res.status(200).json(room.users);
             }
         });
     });

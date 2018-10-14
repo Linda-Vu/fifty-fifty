@@ -2,6 +2,7 @@ import axios from 'axios';
 import { CREATE_ROOM } from './types';
 import { FETCH_SURVEY_QUESTIONS } from './types';
 import { SAVE_USER_RESPONSES } from './types';
+import { FETCH_SURVEY_RESPONSES } from './types';
 
 
 // index.js within actions folder contains actions for reducers
@@ -24,4 +25,10 @@ export const saveUserResponses = (body, roomId, userId, history) => async dispat
 
     dispatch({ type: SAVE_USER_RESPONSES, payload: res.data });
     history.push(`/room/${roomId}/responses`);
+  };
+
+export const fetchSurveyResponses = (roomId) => async dispatch => {
+    const res = await axios.get(`/api/room/${roomId}/responses`);
+
+    dispatch({ type: FETCH_SURVEY_RESPONSES, payload: res.data });
   };
