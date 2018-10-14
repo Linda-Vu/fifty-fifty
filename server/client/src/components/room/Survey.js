@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
-import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import axios from 'axios';
+import "../App.css";
+
 // import { createRoom } from '../../actions';
 
 
@@ -12,7 +12,8 @@ class Survey extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            questions: []
+            questions: [],
+            users: [],
         }
       }
 
@@ -21,27 +22,38 @@ class Survey extends Component {
         const roomId =  this.props.match.params.roomId + '/questions'
         const surveyUrl = baseUrl + roomId 
         console.log(this.props);
-        axios.get(surveyUrl)
-        axios.get(surveyUrl)
-         .then((response) => {
+        // axios grabs the questions from
+        axios.get(surveyUrl).then((response) => {
             const questions = response.data;
             console.log(this);
             this.setState({questions:questions})
-         })
-        // this.props.fetchSurveyQuestions();
-        
+            //axios request below gets the endpoint for users in a given room
+            axios.get(baseUrl + this.props.match.params.roomId + '/users').then(response => {
+                const users = response.data;
+                console.log(users);
+                this.setState({users:users});
+            })
+         })        
     }
         render() {
             const surveyQuestions = this.state.questions.map((question, index) => {
                 return (
-                    <li id="questions" key={index}>{question}</li>
+                    <li key={index}>{question} <input type="text" onChange={event => console.log(index, event.target.value)}></input></li>
                 )
             }
         )
             return (
-            <div>
-                <ul>{surveyQuestions}</ul>
-            </div>
+            <span>
+                What's your name?
+                <select onChange={event => console.log(event.target.value)}>
+                    {this.state.users.map(user => {
+                        return (
+                            <option value={user.userId} key={user.userId} >{user.name}</option>
+                        )
+                    })}
+                </select>
+                <ul className="unstyled" id="questions-list">{surveyQuestions}</ul>
+            </span>
             )
         }
     

@@ -1,16 +1,28 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 #header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(0, 0, 0);
 }
 
+/* survey component */
+  #questions-list {
+    display: inline-block;
+  }
+
+  .justified {
+    text-align: left
+  }
+
+  .unstyled {
+      list-style-type: none;
+  }
 
 
