@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
 import axios from 'axios';
+import { saveUserResponses } from '../../actions';
 import "../App.css";
-
-// import { createRoom } from '../../actions';
-
 
 // survey component renders questions from DB when the link from createroom is clicked
 
@@ -14,6 +14,7 @@ class Survey extends Component {
         this.state = {
             questions: [],
             users: [],
+            userId: '1'
         }
       }
 
@@ -22,30 +23,49 @@ class Survey extends Component {
         const roomId =  this.props.match.params.roomId + '/questions'
         const surveyUrl = baseUrl + roomId 
         console.log(this.props);
-        // axios grabs the questions from
+        // axios get req grabs the questions from props of Survey's redux state
         axios.get(surveyUrl).then((response) => {
             const questions = response.data;
             console.log(this);
             this.setState({questions:questions})
+            this.setState({responses: new Array(questions.length)});
             //axios request below gets the endpoint for users in a given room
             axios.get(baseUrl + this.props.match.params.roomId + '/users').then(response => {
                 const users = response.data;
                 console.log(users);
                 this.setState({users:users});
             })
+            // axios.post(baseUrl + this.props.match.params.roomId.userId + '/submitResponses').then(response => {
+            //     const userResponse = response.data;
+            //     console.log(userResponse);
+            //     this.setState({userResponse:userResponse});
+            // })
          })        
     }
+
+    // handles user event of clicking and links it up with redux actions
+    handleSubmitButtonClick(event) {
+        let roomId = this.props.match.params.roomId;
+        let userId = this.state.userId;
+        let body = {responses: this.state.responses};
+        this.props.saveUserResponses(body, roomId, userId, this.props.history);
+
+        console.log(this);
+    }
+
         render() {
             const surveyQuestions = this.state.questions.map((question, index) => {
                 return (
-                    <li key={index}>{question} <input type="text" onChange={event => console.log(index, event.target.value)}></input></li>
+                    <li key={index}>{question} <input type="text" onChange={event => {
+                        let updatedResponse = this.state.responses;
+                        updatedResponse[index] = event.target.value;
+                    }}></input></li>
                 )
-            }
-        )
+            })
             return (
             <span>
                 What's your name?
-                <select onChange={event => console.log(event.target.value)}>
+                <select onChange={event => this.setState({userId: event.target.value})}>
                     {this.state.users.map(user => {
                         return (
                             <option value={user.userId} key={user.userId} >{user.name}</option>
@@ -53,6 +73,7 @@ class Survey extends Component {
                     })}
                 </select>
                 <ul className="unstyled" id="questions-list">{surveyQuestions}</ul>
+                <button onClick={event => this.handleSubmitButtonClick(event)}> Submit </button>
             </span>
             )
         }
@@ -60,8 +81,14 @@ class Survey extends Component {
 } 
 
 function mapStateToProps(reduxState) {
-    let survey = reduxState.survey;  
-    return {survey};
+    let survey = reduxState.survey;
+    let response = reduxState.saveUserResponse;
+    return {survey, response};
+}
+
+function mapDispatchToProps(dispatch) {
+    console.log(this.state);
+    return bindActionCreators({ saveUserResponses }, dispatch);
   }
 
-export default connect(mapStateToProps)(Survey);
+export default connect(mapStateToProps, mapDispatchToProps)(Survey);
