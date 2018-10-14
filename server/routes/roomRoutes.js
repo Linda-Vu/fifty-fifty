@@ -29,6 +29,22 @@ module.exports = app => {
         res.json(room);
     });
 
+// route below grabs all of the users in a given room and allows
+// for functionality on dropdown menu for front-end of survey component
+    app.get('/api/room/:roomId/users', async (req, res) => {
+        let roomId = req.params.roomId;
+        Room.findById(roomId, (err, room) => {
+            if (err) {
+                //err 500 if server messes up 
+                res.status(500).json(err);
+            // if database didn't explode, then server returns the room object with the
+            // property 'questions' that we want for the endpoint
+            } else {
+                res.status(200).json(room.users);
+            }
+        });
+    });
+
     // route below aims to get the questions of room schema from api 
     // req needs a params, get request cannot have a body unlike post req
     app.get('/api/room/:roomId/questions', async (req, res) => {
@@ -44,6 +60,7 @@ module.exports = app => {
             }
         });
     });
+
 
     // route below aims to post the responses of room schema from api for a given user
     // req needs params, get request cannot have a body unlike post req
