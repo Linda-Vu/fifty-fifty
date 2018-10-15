@@ -37,20 +37,20 @@ class CreateRoom extends Component {
 
         if(!this.props.room) {
             return (
-            <div className="col-md-6">  
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div>  
+                <form className="room-name-text" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     <Field
-                    label="Room Name"
+                    label="ROOM NAME"
                     name="roomName"
                     component={this.renderField}
                     />
                     <Field
-                    label="Person 1"
+                    label="PERSON 1"
                     name="firstUserName"
                     component={this.renderField}
                     />
                     <Field
-                    label="Person 2"
+                    label="PERSON 2"
                     name="secondUserName"
                     component={this.renderField}
 
@@ -62,11 +62,11 @@ class CreateRoom extends Component {
             );
         } else {
             return (
-                <div className="col-md-8" className="link-to-room" style={{ background: 'rgb(153, 150, 177)', width: '100vw', height: '100vh' }}>
+                <div className="new-link-highlight">
                     <p className="new-room">
                     Here's a link to your new room!
                     </p>
-                    <Link to ={`/room/${this.props.room._id}`} > 
+                    <Link to ={`/room/${this.props.room._id}`} className="link-to-room" > 
                         localhost:3000/room/questions
                     </Link>
                     

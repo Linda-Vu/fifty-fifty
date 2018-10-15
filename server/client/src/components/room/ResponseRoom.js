@@ -33,7 +33,7 @@ class ResponseRoom extends Component {
 
   renderUserResponse(response) {
     if(!response) {
-        return (<em className="no-user-response">try refreshing the browser! user still needs to fill this out</em>)
+        return (<em className="no-user-response">...waiting for user response</em>)
     }
 
     return response;
@@ -49,7 +49,7 @@ class ResponseRoom extends Component {
     let users = responses;
 
     return (
-        <div className="col-md-7">
+        <div className="col-md-7 col-sm-7">
            { questions.map((question, questionIndex) => {
                return (
                 <div className="container question-container" key={questionIndex}>   
@@ -65,14 +65,18 @@ class ResponseRoom extends Component {
                                 {users[0].name}
                                 </p>
                             <br/>
+                                <p className="user-response">
                                 {this.renderUserResponse(users[0].responses[questionIndex])}
+                                </p>
                         </div>
                         <div className="offset-md-1 col-md-5 col-sm-5 centered">
                                 <p className="name-style">
                                 {users[1].name}
                                 </p>
                             <br/>
+                                <p className="user-response">
                                 {this.renderUserResponse(users[1].responses[questionIndex])}
+                                </p>
                         </div>
                     </div>
                 </div>
