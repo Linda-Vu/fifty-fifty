@@ -5,13 +5,13 @@ import Survey from './room/Survey';
 import ResponseRoom from './room/ResponseRoom';
 
 const Main = () => (
-    <main id="body" >
+    <div className="col-md-7" >
       <Switch>
         <Route exact path='/' component={CreateRoom}/>
         <Route exact path='/room/:roomId' component={Survey}/>
         <Route exact path='/room/:roomId/responses' component={ResponseRoom}/>
       </Switch>
-    </main>
+    </div>
   )
 
 export default Main;

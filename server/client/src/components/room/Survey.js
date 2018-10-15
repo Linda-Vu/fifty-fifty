@@ -57,34 +57,42 @@ class Survey extends Component {
         render() {
             const surveyQuestions = this.state.questions.map((question, index) => {
                 return (
-                    
-                    <li key={index} className="col-md-8">{question} <input type="text" className="col-md-12"onChange={event => {
+                    <div className="row">
+                    <div key={index} className="col-md-12 col-sm-12"><span className="white-question">{question}</span> <br /> <input type="text" className="col-md-12 col-sm-12" onChange={event => {
                         let updatedResponse = this.state.responses;
                         updatedResponse[index] = event.target.value;
-                    }}></input></li>
+                    }}></input></div>
+                    </div>
                     
                 )
             })
             return (
-            <div className="col-md-8">
-                <div className="col-md-8">
-                <p className="nameSelection">
-                What's your name?
-                </p>
-                <select onChange={event => this.setState({userId: event.target.value})}>
-                    {this.state.users.map(user => {
-                        return (
-                            <option value={user.userId} key={user.userId} >{user.name}</option>
-                        )
-                    })}
-                </select>
-                </div>
-                <ul className="unstyled" id="questions-list">{surveyQuestions}</ul>
-                <div className="col-md-8"> 
-                <Button bsStyle="success" onClick={event => this.handleSubmitButtonClick(event)}> S U B M I T </Button>
-                <Link to="/" className="btn btn-danger"> C A N C E L </Link>
-                </div>
-            </div>
+                <div className="container">
+                    <div className="row">
+                            <div className="col-md-6 col-sm-6 survey-user-dropdown" id="name-picker-dropdown">
+                                <h1 className="what-name">
+                                What's your name?
+                                </h1>
+                                <br />
+                            <select className="col-md-6 col-sm-6 survey-user-name" onChange={event => this.setState({userId: event.target.value})}>
+                                {this.state.users.map(user => {
+                                    return (
+                                        <option value={user.userId} key={user.userId} >{user.name}</option>
+                                    )
+                                })}
+                            </select>
+                            </div>
+                        </div>
+                        <div className="unstyled survey-questions" id="questions-list">
+                            {surveyQuestions
+                        }</div>
+                        <div className="row">
+                            <div className="float-right"> 
+                            <Link to="/" className="btn btn-danger"> C A N C E L </Link>
+                            <Button bsStyle="success" onClick={event => this.handleSubmitButtonClick(event)}> S U B M I T </Button>
+                            </div>
+                        </div>
+                    </div>
             )
         }
     

@@ -15,29 +15,83 @@
     font-family: 'Pacifico', Helvetica, sans-serif;
     font-size: 50px;
     color: rgb(255, 255, 255);
+}
 
+.room-link {
+    color: rgb(33, 34, 75);
 }
 /* CreateRoom component */
 .col-md-6 {
     margin: 3%;
 }
 
+.room-name-text {
+    color: white;
+    font-size: 27;
+    margin-top: 8%;
+}
+
+.new-link-highlight {
+    /* background: rgb(164, 162, 193);
+    width: 100%;
+    height: 200px;  */
+    margin-top: 15%;
+    border-radius: 45px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.37);
+    border-width: 4px;
+}
+
 .link-to-room {
-    padding: 10%;
+    color: rgb(59, 58, 82);
 }
 
 /* survey component */
-.nameSelection {
-    margin: 5%;
+
+.survey-user-name {
+    color: rgb(59, 58, 82);
+    left: 50% !important;
+    right: auto !important;
+    text-align: center !important;
+    transform: translate(-50%, 0) !important;
 }
+
+.survey-user-dropdown {
+    margin-top: 5%;
+    text-align: center;
+    transform: translate(40%, 0) !important;
+}
+
+h1.what-name {
+    color: white;
+    font-size: 30px;
+
+}
+
+#name-picker-dropdown {
+     border-radius: 45px;
+     border-style: solid;
+     border-color: rgba(255, 255, 255, 0.37);
+     border-width: 4px;
+     
+}
+
+.survey-questions {
+    font-size: 30px;
+}
+
+.white-question {
+    color: white
+}
+
 
 /* ResponseRoom component */
 .col-md-8 {
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 .no-user-response {
-    color: rgb(224, 75, 75);
+    color: rgb(255, 255, 255);
     font-style: italic;
 }
 
@@ -45,11 +99,16 @@
     list-style-type: none;
 }
 
+div.App.container {
+    width: 100vw;
+}
 
 
 .name-style {
     list-style-type: none;
-    font-weight: bold;
+    color: rgb(55, 57, 109);
+
+
 }
 
 .justified {
@@ -59,6 +118,8 @@
 .question-style {
     font-weight: bold;
     font-style: italic;
+    font-size: 27px;
+    color: rgb(55, 57, 109);
 }
 
 .centered {
@@ -68,8 +129,16 @@
 .question-container {
     margin-top: 10px;
     margin-bottom: 10px;
-    border-radius: 2px;
-    border-style: outset;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.37);
+    border-width: 4px;
+}
+
+.user-response {
+    color: white;
+    font-style: italic;
+    font-size: 24px;
 }
 
 
