@@ -33,7 +33,7 @@ class ResponseRoom extends Component {
 
   renderUserResponse(user, index) {
     if(!user.responses || !user.responses[index]) {
-        return (<em>user still needs to fill this out</em>)
+        return (<div className="no-user-response">user still needs to fill this out</div>)
     }
 
     return user.responses[index];
@@ -48,15 +48,15 @@ class ResponseRoom extends Component {
     
 
     return (
-      <div>
+      <div className="col-md-8">
           {
               responses.map((user, userIndex) => {
                 return (
-                    <div key={userIndex}>
-                        <li className="unstyled">{user.name}</li>
+                    <div key={userIndex} className="col-md-8">
+                        <li className="unstyled" className="user-name">{user.name}</li>
                         <ul className="unstyled" id="responses-list">{questions.map((question, questionIndex) => {
                             return (
-                            <li key={questionIndex}>{question}: {this.renderUserResponse(user, questionIndex)}</li>
+                            <li key={questionIndex} className="response-questions">{question}: {this.renderUserResponse(user, questionIndex)}</li>
                             )
                         })}
                         </ul>

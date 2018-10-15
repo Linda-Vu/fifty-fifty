@@ -57,15 +57,20 @@ class Survey extends Component {
         render() {
             const surveyQuestions = this.state.questions.map((question, index) => {
                 return (
-                    <li key={index}>{question} <input type="text" className="survey-inpuy" onChange={event => {
+                    
+                    <li key={index} className="col-md-8">{question} <input type="text" className="col-md-12"onChange={event => {
                         let updatedResponse = this.state.responses;
                         updatedResponse[index] = event.target.value;
                     }}></input></li>
+                    
                 )
             })
             return (
-            <div className="col-md-6">
+            <div className="col-md-8">
+                <div className="col-md-8">
+                <p className="nameSelection">
                 What's your name?
+                </p>
                 <select onChange={event => this.setState({userId: event.target.value})}>
                     {this.state.users.map(user => {
                         return (
@@ -73,10 +78,12 @@ class Survey extends Component {
                         )
                     })}
                 </select>
+                </div>
                 <ul className="unstyled" id="questions-list">{surveyQuestions}</ul>
-                <Button bsStyle="primary" onClick={event => this.handleSubmitButtonClick(event)}> Submit </Button>
-                <Link to="/" className="btn btn-danger">Cancel</Link>
-
+                <div className="col-md-8"> 
+                <Button bsStyle="success" onClick={event => this.handleSubmitButtonClick(event)}> S U B M I T </Button>
+                <Link to="/" className="btn btn-danger"> C A N C E L </Link>
+                </div>
             </div>
             )
         }

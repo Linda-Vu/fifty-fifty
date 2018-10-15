@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
+import {Button} from 'react-bootstrap';
 import { bindActionCreators } from "redux";
 import { createRoom } from '../../actions';
 
@@ -59,8 +60,8 @@ class CreateRoom extends Component {
                     placeholder="Name"
 
                     />
-                    <button type="submit" className="btn btn-primary">Submit</button>
-                    <Link to="/" className="btn btn-danger">Cancel</Link>
+                    <Button bsStyle="success"> S U B M I T </Button>
+                    <Link to="/" className="btn btn-danger"> C A N C E L </Link>
                 </form>
             </div>
             );

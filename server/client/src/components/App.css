@@ -14,23 +14,45 @@
 
 /* CreateRoom component */
 .col-md-6 {
-    margin: 5%;
+    margin: 2%;
 }
 
 /* survey component */
-.survey-input {
-
+.nameSelection {
+    margin: 5%;
 }
-  .questions-list {
+
+
+.questions-list {
     display: inline-block;
-  }
+}
 
-  .justified {
+/* ResponseRoom component */
+.col-md-8 {
+    margin-top: 2%;
+}
+
+.no-user-response {
+    color: rgb(224, 75, 75);
+    font-style: italic;
+}
+.response-questions {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+}
+.unstyled {
+    list-style-type: none;
+}
+
+.user-name {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.justified {
     text-align: left;
-  }
+}
 
-  .unstyled {
-      list-style-type: none;
-  }
+
 
 
