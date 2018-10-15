@@ -9,7 +9,7 @@ import { createRoom } from '../../actions';
 // createRoom should have a place to take user input
 // upon submitting the roomName --->
 // the page should toggle and reveal a link to the new room
-
+// couldn't figure out how to render placeholder text in the fields :(
 class CreateRoom extends Component {
     renderField(field) {
         const { meta: { touched, error } } = field;
@@ -37,25 +37,32 @@ class CreateRoom extends Component {
 
         if(!this.props.room) {
             return (
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <Field
-                label="Room Name"
-                name="roomName"
-                component={this.renderField}
-                />
-                <Field
-                label="Human 1"
-                name="firstUserName"
-                component={this.renderField}
-                />
-                <Field
-                label="Human 2"
-                name="secondUserName"
-                component={this.renderField}
-                />
-                <button type="submit" className="btn btn-primary">Submit</button>
-                <Link to="/" className="btn btn-danger">Cancel</Link>
-            </form>
+            <div className="col-md-6">  
+                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                    <Field
+                    label="Room Name"
+                    name="roomName"
+                    component={this.renderField}
+                    placeholder="Room Name"
+                    />
+                    <Field
+                    label="Person 1"
+                    name="firstUserName"
+                    component={this.renderField}
+                    placeholder="Name"
+
+                    />
+                    <Field
+                    label="Person 2"
+                    name="secondUserName"
+                    component={this.renderField}
+                    placeholder="Name"
+
+                    />
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <Link to="/" className="btn btn-danger">Cancel</Link>
+                </form>
+            </div>
             );
         } else {
             return (
@@ -64,7 +71,8 @@ class CreateRoom extends Component {
                     
                     <Link to ={`/room/${this.props.room._id}`} > 
                         
-                        localhost:3000/room/?id=this.props.room._id
+                        Here is your link!
+                        localhost:3000/room/questions
                     </Link>
                     
                 </div>
@@ -79,7 +87,7 @@ function validate(values) {
   
     // Validate the inputs from 'values'
     if (!values.roomName) {
-      errors.roomName = "Enter a name for your room";
+      errors.roomName = "What is this conversation about?";
     }
     if (!values.firstUserName) {
       errors.firstUserName = "Enter a name for your user";

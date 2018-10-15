@@ -9,7 +9,7 @@ const Img = <img className="logo" src={Logo}/>
 class Header extends Component {
     render() {
         return (
-            <div className = "header">
+            <div className = "header" className="col-md-4">
                 {Img}
             </div>
         )

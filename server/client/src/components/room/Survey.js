@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-
+import { Link } from 'react-router-dom';
+import {Button} from 'react-bootstrap';
 import axios from 'axios';
 import { saveUserResponses } from '../../actions';
 import "../App.css";
@@ -56,14 +57,14 @@ class Survey extends Component {
         render() {
             const surveyQuestions = this.state.questions.map((question, index) => {
                 return (
-                    <li key={index}>{question} <input type="text" onChange={event => {
+                    <li key={index}>{question} <input type="text" className="survey-inpuy" onChange={event => {
                         let updatedResponse = this.state.responses;
                         updatedResponse[index] = event.target.value;
                     }}></input></li>
                 )
             })
             return (
-            <span>
+            <div className="col-md-6">
                 What's your name?
                 <select onChange={event => this.setState({userId: event.target.value})}>
                     {this.state.users.map(user => {
@@ -73,8 +74,10 @@ class Survey extends Component {
                     })}
                 </select>
                 <ul className="unstyled" id="questions-list">{surveyQuestions}</ul>
-                <button onClick={event => this.handleSubmitButtonClick(event)}> Submit </button>
-            </span>
+                <Button bsStyle="primary" onClick={event => this.handleSubmitButtonClick(event)}> Submit </Button>
+                <Link to="/" className="btn btn-danger">Cancel</Link>
+
+            </div>
             )
         }
     
