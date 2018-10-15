@@ -31,12 +31,12 @@ class ResponseRoom extends Component {
     console.log(this);
   }
 
-  renderUserResponse(user, index) {
-    if(!user.responses || !user.responses[index]) {
-        return (<div className="no-user-response">user still needs to fill this out</div>)
+  renderUserResponse(response) {
+    if(!response) {
+        return (<em className="no-user-response">try refreshing the browser! user still needs to fill this out</em>)
     }
 
-    return user.responses[index];
+    return response;
   }
   render() {
     let { responses } = this.props;
@@ -45,29 +45,44 @@ class ResponseRoom extends Component {
     if (!responses || !questions) {
         return <div>Loading...</div>;
     }
-    
+
+    let users = responses;
 
     return (
-      <div className="col-md-8">
-          {
-              responses.map((user, userIndex) => {
-                return (
-                    <div key={userIndex} className="col-md-8">
-                        <li className="unstyled" className="user-name">{user.name}</li>
-                        <ul className="unstyled" id="responses-list">{questions.map((question, questionIndex) => {
-                            return (
-                            <li key={questionIndex} className="response-questions">{question}: {this.renderUserResponse(user, questionIndex)}</li>
-                            )
-                        })}
-                        </ul>
+        <div className="col-md-7">
+           { questions.map((question, questionIndex) => {
+               return (
+                <div className="container question-container" key={questionIndex}>   
+                    <div className="row">
+                        <div className="col-md-12 col-sm-12 justified question-style">
+                            {question}
+                        </div>
                     </div>
+                    <br />
+                    <div className="row">
+                        <div className="offset-md-1 col-md-5 col-sm-5 centered">
+                                <p className="name-style">
+                                {users[0].name}
+                                </p>
+                            <br/>
+                                {this.renderUserResponse(users[0].responses[questionIndex])}
+                        </div>
+                        <div className="offset-md-1 col-md-5 col-sm-5 centered">
+                                <p className="name-style">
+                                {users[1].name}
+                                </p>
+                            <br/>
+                                {this.renderUserResponse(users[1].responses[questionIndex])}
+                        </div>
+                    </div>
+                </div>
                 )
-            })
-          }
-      </div>
-    );
+              })
+            } 
+        </div>
+      );
+    }
   }
-}
 
 function mapStateToProps(state) {
   let responses = state.responses;
@@ -79,3 +94,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResponseRoom);
+
+

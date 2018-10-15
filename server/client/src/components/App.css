@@ -11,20 +11,24 @@
     margin-top: 15%;
 
 }
+.new-room {
+    font-family: 'Pacifico', Helvetica, sans-serif;
+    font-size: 50px;
+    color: rgb(255, 255, 255);
 
+}
 /* CreateRoom component */
 .col-md-6 {
-    margin: 2%;
+    margin: 3%;
+}
+
+.link-to-room {
+    padding: 10%;
 }
 
 /* survey component */
 .nameSelection {
     margin: 5%;
-}
-
-
-.questions-list {
-    display: inline-block;
 }
 
 /* ResponseRoom component */
@@ -36,15 +40,14 @@
     color: rgb(224, 75, 75);
     font-style: italic;
 }
-.response-questions {
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
-}
+
 .unstyled {
     list-style-type: none;
 }
 
-.user-name {
+
+
+.name-style {
     list-style-type: none;
     font-weight: bold;
 }
@@ -53,6 +56,20 @@
     text-align: left;
 }
 
+.question-style {
+    font-weight: bold;
+    font-style: italic;
+}
 
+.centered {
+    text-align: center;
+}
+
+.question-container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border-style: outset;
+}
 
 
