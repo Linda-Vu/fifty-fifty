@@ -6,7 +6,6 @@ import {Button} from 'react-bootstrap';
 import { bindActionCreators } from "redux";
 import { createRoom } from '../../actions';
 
-
 // createRoom should have a place to take user input
 // upon submitting the roomName --->
 // the page should toggle and reveal a link to the new room
@@ -44,35 +43,30 @@ class CreateRoom extends Component {
                     label="Room Name"
                     name="roomName"
                     component={this.renderField}
-                    placeholder="Room Name"
                     />
                     <Field
                     label="Person 1"
                     name="firstUserName"
                     component={this.renderField}
-                    placeholder="Name"
-
                     />
                     <Field
                     label="Person 2"
                     name="secondUserName"
                     component={this.renderField}
-                    placeholder="Name"
 
                     />
-                    <Button bsStyle="success"> S U B M I T </Button>
                     <Link to="/" className="btn btn-danger"> C A N C E L </Link>
+                    <Button bsStyle="success" type="submit"> S U B M I T </Button>
                 </form>
             </div>
             );
         } else {
             return (
-                <div>
-                    Here's a link to your new room!:
-                    
+                <div className="col-md-8" className="link-to-room" style={{ background: 'rgb(153, 150, 177)', width: '100vw', height: '100vh' }}>
+                    <p className="new-room">
+                    Here's a link to your new room!
+                    </p>
                     <Link to ={`/room/${this.props.room._id}`} > 
-                        
-                        Here is your link!
                         localhost:3000/room/questions
                     </Link>
                     

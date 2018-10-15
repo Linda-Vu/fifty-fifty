@@ -5,7 +5,7 @@ import * as actions from '../actions';
 import Header from './header/Header';
 import './App.css';
 import Main from './Main.js';
-
+import 'typeface-pacifico';
 
 class App extends Component {
   componentDidMount() {

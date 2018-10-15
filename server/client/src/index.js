@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers/index.js';
 import axios from 'axios';
-import 'typeface-roboto';
+import 'font-awesome/css/font-awesome.min.css';
 
 window.axios = axios;
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
